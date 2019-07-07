@@ -1,17 +1,17 @@
 <template>
     <article class="message">
-    <div class="message-header">
-        <p>New Quote</p>
-    </div>
-    <div class="message-body">
+        <div class="message-header">
+            <p>New Quote</p>
+        </div>
+        <div class="message-body">
         <form>
             <textarea class="textarea quote-add-button" placeholder="Add a new Quote" rows="5"></textarea>
-        <div class="column has-text-centered">
-            <button class="button is-primary is-normal add-button">Add Button</button>
-        </div>
+            <div class="column">
+                <button class="button is-primary is-normal add-button">Add Button</button>
+            </div>
         </form>
-        
-    </div>
+            
+        </div>
     </article>
 </template>
 

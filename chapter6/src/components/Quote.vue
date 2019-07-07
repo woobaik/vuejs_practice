@@ -1,22 +1,32 @@
 <template>
-    <article class="message">
-    <div class="message-header">
-        <p>1. quote</p>
-    </div>
-    <div class="message-body">
-        <form>
-            <textarea class="textarea quote-add-button" placeholder="Add a new Quote" rows="5"></textarea>
-        <div class="column has-text-centered">
-            <button class="button is-primary is-normal add-button">Add Button</button>
+    <div class="card column is-one-third">
+        <div class="card-content">
+            <p class="title">
+            “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+            </p>
+            <p class="subtitle">
+            Jeff Atwood
+            </p>
         </div>
-        </form>
+
     </div>
-    </article>
+
+
+
+    
 </template>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .add-button {
-        margin-top: 10px;
+    .card {
+    width: 30% !important;
+    margin-right: 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
     }
 </style>
