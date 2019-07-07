@@ -1,7 +1,7 @@
 <template>
     <article class="message">
     <div class="message-header">
-        <p>1. quote</p>
+        <p>New Quote</p>
     </div>
     <div class="message-body">
         <form>
@@ -10,6 +10,7 @@
             <button class="button is-primary is-normal add-button">Add Button</button>
         </div>
         </form>
+        
     </div>
     </article>
 </template>

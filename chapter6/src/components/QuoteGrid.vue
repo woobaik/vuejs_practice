@@ -1,15 +1,17 @@
 <template>
     <div class="container is-widescreen quote-grid">
-        <app-quote></app-quote>        
+        <newQuote></newQuote>
     </div>
 </template>
 
 <script>
     import quote from '../components/Quote.vue'
+    import newQuote from '../components/NewQuote.vue'
 
     export default {
         components: {
-            appQuote: quote
+            appQuote: quote,
+            newQuote: newQuote
         }
     }
 </script>
