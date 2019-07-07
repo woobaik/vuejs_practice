@@ -1,20 +1,23 @@
 <template>
     <article class="message">
     <div class="message-header">
-        <p>Hello World</p>
-        <button class="delete" aria-label="delete"></button>
+        <p>New Quote</p>
     </div>
     <div class="message-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
+        <form>
+            <textarea class="textarea quote-add-button" placeholder="Add a new Quote" rows="10"></textarea>
+        <div class="column is-2 is-offset-10">
+            <button class="button is-primary add-button has-text-centered">Add Button</button>
+        </div>
+        </form>
+        
     </div>
     </article>
 </template>
 
-<script>
-
-</script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+    .add-button {
+        margin-top: 10px;
+    }
 </style>
