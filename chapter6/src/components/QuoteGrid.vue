@@ -1,6 +1,6 @@
 <template>
     <div class="box is-widescreen quote-grid">
-        <newQuote></newQuote>
+        <newQuote @newQuoteUpdated="addNewQUote"></newQuote>
         <div class="columns is-multiline">
             <app-quote v-for="(quote) in quotes" :key="quote">{{quote}}</app-quote>
         </div>
@@ -15,12 +15,19 @@
     export default {
         data: function() {
             return {
-                quotes: [1,2,3,4,5,6]
+                quotes: ['tonight is the night', 'MONKEY PATCHING!', 'Turn on the computer, future is there.',
+                        "Let's see if we can append"]
             }
         },
         components: {
             appQuote: quote,
             newQuote: newQuote
+        },
+        methods: {
+            addNewQUote: function(quote) {
+                console.log(quote)
+                this.quotes.push(quote)
+            }
         }
     }
 </script>
@@ -30,10 +37,6 @@
     .quote-grid{
         padding-top: 30px;
     }
-    .card{
-        width: 33%;
-        display: flex;
-        flex-direction: column;
-    }
+
 </style>
 

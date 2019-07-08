@@ -2,25 +2,24 @@
     <div class="card column is-one-third">
         <div class="card-content">
             <p class="title">
-            “There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.”
+                <slot></slot>
             </p>
-            <p class="subtitle">
-            Jeff Atwood
-            </p>
+   
         </div>
 
-    </div>
-
-
-
-    
+    </div>    
 </template>
+
+
+
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     .card {
-    width: 30% !important;
+    width: 32%;
     margin-right: 5px;
+    margin-bottom: 10px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -28,5 +27,10 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+    }
+
+    .card:hover {
+        background-color: bisque;
+        border-radius: 5%
     }
 </style>
