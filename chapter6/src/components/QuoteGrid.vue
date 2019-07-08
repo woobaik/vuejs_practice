@@ -1,7 +1,7 @@
 <template>
     <div class="box is-widescreen quote-grid">
         <label for="bar">Progress Bar</label>
-        <progress class="progress is-primary" value="50" max="100" name="bar">15%</progress>
+        <progress class="progress is-primary" :value="progressBar" max="5" name="bar">15%</progress>
         <newQuote @newQuoteUpdated="addNewQUote"></newQuote>
         <div class="columns is-multiline">
             <app-quote v-for="(quote,index) in quotes" :key="quote" @click.native="deleteQuote(index)">{{quote}}</app-quote>
@@ -33,11 +33,23 @@
                 } else {
                     this.quotes.push(quote)
                 }
-                console.log(this.max)
+                return
             },
             deleteQuote: function(idx) {
-                this.quotes.splice(idx,1)
-            }
+                return this.quotes.splice(idx,1)
+            },
+            
+            },
+        created: function() { 
+            console.log(this.quotes.length)
+            console.log(this.maxQuote)
+            console.log(Math.floor(this.quotes.length / this.maxQuote * 5)  ) 
+        },
+        
+        computed: {
+            progressBar: function() {
+            return Math.floor(this.quotes.length / this.maxQuote * 5)
+        }
         }
     }
 </script>
@@ -48,5 +60,8 @@
         padding-top: 30px;
     }
 
+    .progress::-webkit-progress-value {
+        transition: width 0.5s ease;
+    }
 </style>
 
