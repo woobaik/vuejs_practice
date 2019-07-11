@@ -1,6 +1,8 @@
 <template>
     <div>
-        User Component
+        <h1>
+            This is an User Component
+        </h1>
     </div>
 </template>
 
