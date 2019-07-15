@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-header></app-header>
-    <app-home></app-home>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -12,7 +12,6 @@ import Header from './components/Header.vue'
 export default {
   name: 'app',
   components: {
-    appHome: Home,
     appHeader: Header
   }
 }

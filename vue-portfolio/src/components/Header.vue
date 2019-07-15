@@ -17,14 +17,9 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
-        Home
-      </a>
-
-      <a class="navbar-item">
-        Documentation
-      </a>
-
+      <router-link to='/' class="navbar-item">Home</router-link>
+      <router-link :to="{name: 'portfolio'}" class="navbar-item">Portfolio</router-link>
+      <router-link :to="{name: 'stocks'}" class="navbar-item">Stocks</router-link>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           More
@@ -43,19 +38,6 @@
           <hr class="navbar-divider">
           <a class="navbar-item">
             Report an issue
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
           </a>
         </div>
       </div>
