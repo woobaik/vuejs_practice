@@ -1,5 +1,5 @@
 <template>
-    
+    stocks => stocks
 </template>
 
 <script>
