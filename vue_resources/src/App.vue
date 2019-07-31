@@ -1,19 +1,30 @@
 <template>
   <div id="app">
-      <app-header></app-header>
+      <div>
+        <app-header></app-header>
+      </div>
+      <div>
+        
+      </div>
+      <div>
+        <app-footer></app-footer>
+      </div>
+
+
   </div>
 </template>
 
 <script>
-
-
-export default {
-  name: 'app'  
+import Header from './components/Header-footer/Header.vue';
+import Footer from './components/Header-footer/Footer.vue';
+export default {  
+  components : {
+    appHeader: Header,
+    appFooter: Footer
+  }
 }
 </script>
 
 <style>
-#app {
 
-}
 </style>

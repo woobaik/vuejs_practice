@@ -1,8 +1,5 @@
 <template>
     <div>
-        Hello world
+        Footer
     </div>
 </template>
-
-<script>
-</script>
