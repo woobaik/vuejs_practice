@@ -4,8 +4,12 @@
             <img :src="logo" class="header-logo-image" @click="logoClick">
         </div>
         <div class="header-menu">
-            <img :src="menu" class="header-menu-image" @click="menuClick">
+            <img :src="menu" class="header-menu-image" @click="showNavigation = !showNavigation">
         </div>
+         <md-drawer :md-active.sync="showNavigation" :md-right="true" :md-swipeable="true">
+      
+         </md-drawer>
+
         
     </div>
     
@@ -19,7 +23,8 @@
         data: function() {
             return {
                 logo: Logo,
-                menu: Menu
+                menu: Menu,
+                showNavigation: true
             }
         },
 
