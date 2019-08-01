@@ -24,7 +24,7 @@
             return {
                 logo: Logo,
                 menu: Menu,
-                showNavigation: true
+                showNavigation: false
             }
         },
 

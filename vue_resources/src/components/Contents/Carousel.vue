@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <carousel :per-page="1" :autoplay="true" :autoplayTimeout="4000" :autoplayHoverPause="true">
+    <div class="">
+        <carousel :per-page="1" :autoplay="true" :autoplayTimeout="4000" :autoplayHoverPause="true" class="carousel">
             <slide v-for="(slide,idx) in slides" :key="idx" class="slide-img" :style="{ backgroundImage: `url( ${ slide.backgroundImg } )`}">
                 <div>
                     {{slide.text}}
@@ -43,8 +43,15 @@ export default {
     .slide-img {
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: center;
+        background-position: top left;
         background-size: 100%;
+        height: 100vh;
+        width: auto;
+        
+    }
+
+    .carousel {
+        
     }
 
 </style>
