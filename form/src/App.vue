@@ -1,21 +1,40 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <div class="container">
+      <h1>First Form</h1>
+      <div class="form-contrl">
+        <label for="name">Name: </label>
+        <input type="text" id="name" v-model="formData.name">
+      </div>
+
+      <div class="form-control">
+        <label for="email">Email :</label>
+        <input type="text" id="email" v-model="formData.email">
+      </div>
+
+      <div class="form-control">
+        <textarea name="description" cols="30" rows="10" id="text-area" v-model="formData.description">
+          Enter Description
+        </textarea>
+      </div>
+
+      <div class="form-control">
+        <label for="notification">Notification</label>
+        <input type="checkbox" id="notification" v-model="formData.emailType.notification">
+        <label for="promotion">Promotion</label>
+        <input type="checkbox" id="promotion" v-model="formData.emailType.promotion">
+      </div>
+
+      <div class="form-control">
+        <select name="plan" id="plan" v-model="formData.plan">
+          <option value="basic">Basic</option>
+          <option value="premium">primium</option>
+          <option value="payasyougo">Pay as You Go</option>
+          <option value="unlimited">unlimited</option>
+        </select>
+      </div>
+      <button @click="submit">Submit</button>
+    </div>
   </div>
 </template>
 
@@ -24,37 +43,39 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      formData: {
+        name: '',
+        email: '',
+        description: '',
+        emailType: {
+          notification: false, 
+          promotion: false
+        },
+        plan: ''
+      }
+
+    }
+  }, 
+  methods: {
+    submit() {
+      console.log(this.formData)
+      this.formData = {
+        name: '',
+        email: '',
+        description: '',
+        emailType: {
+          notification: false, 
+          promotion: false
+        },
+        plan: ''
+      }
     }
   }
 }
-</script>
+</script scoped>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
+  .container { 
+    text-align: center;
+  }
 </style>
