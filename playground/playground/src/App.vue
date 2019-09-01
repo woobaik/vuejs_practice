@@ -11,7 +11,7 @@ export default {
   name: 'app',
   data: function() {
     return {
-      users: [1,2,3,4,5]
+      users: ['Brother', 'Sister', 'Friend']
     }
   },
   components: { 

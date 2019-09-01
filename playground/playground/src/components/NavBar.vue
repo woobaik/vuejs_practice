@@ -7,7 +7,11 @@
                 profile {{ user }}
             </router-link>
         </div>
-
+        <div>
+            <button class="btn btn-back" @click="goBack">Go Back</button>
+            <button class="btn btn-home" @click="goHome">Go Home</button>
+            <button class="btn btn-frd" @click="goFoward">Go Forward</button>
+        </div>
         
 
     </div>    
@@ -15,7 +19,20 @@
 
 <script>
 export default {
-    props: ['users']
+    props: ['users'],
+    methods: {
+        goHome() {
+        
+            this.$router.push({name: 'Home'})
+        },
+        goBack() {
+            this.$router.go(-1)
+        },
+        goFoward() {
+            this.$router.go(1)
+        }
+        
+    }
 }
 </script>
 
@@ -41,4 +58,10 @@ export default {
         flex-direction: column;
         margin: 5px;
     }
+
+    .btn {
+        background-color: lightgreen;
+        padding: 5px 10px;
+    }
+
 </style>
