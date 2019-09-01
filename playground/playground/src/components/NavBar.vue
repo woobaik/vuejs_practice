@@ -2,13 +2,20 @@
     <div class="navbar">
         <router-link to="/" class="link">Home</router-link>
         <router-link :to="{ name: 'About' }" class="link">About</router-link>
-        <router-link :to="{ name: 'Profile' }" class="link">Profile</router-link>
+        <div>
+            <router-link class="list" v-for="(user, index) in users" :key="index" :to="{name: 'profile', params: {user_id: user}}" >
+                profile {{ user }}
+            </router-link>
+        </div>
+
+        
+
     </div>    
 </template>
 
 <script>
 export default {
-    
+    props: ['users']
 }
 </script>
 
@@ -26,5 +33,12 @@ export default {
         background-color: #8f7adb;
         color: white;
         text-decoration: none;
+        align-self: flex-start;
+    }
+
+    .list {
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
     }
 </style>
