@@ -7,6 +7,10 @@
         <li><a href="badges.html">Components</a></li>
         <li class="active"><a href="collapsible.html">JavaScript</a></li>
       </ul>
+      
+        <a class="btn-floating btn-large halfway-fab waves-effect  black"><i class="material-icons">add</i></a>
+        
+
     </div>
   </nav>   
 </template>

@@ -1,9 +1,12 @@
 <template>
     <div class="container">
-        <div class="row" v-for="juice in juices" :key="juice.id">
+        
+        <div class="row juice-card" v-for="juice in juices" :key="juice.id">
+            
             <div class="card-title"> 
                 {{ juice.name.toUpperCase()}}
             </div>
+            
             <div class="card-body">
                 <div class="card-ingredient" v-for="ingredient in juice.ingredients" :key="ingredient">
                     {{ ingredient.toUpperCase()}}
@@ -27,14 +30,19 @@ export default {
 <style scoped>
     .container{ 
         display: flex;
-        flex-basis: 25%;
+        flex-basis: 20%;
     }
-    .row {
+    .juice-card {
         margin-top: 2rem;
         text-align: center;
         border-radius: 1rem;
-        background-color: bisque
+        background-color: bisque;
+        padding: 1rem;
+        margin-left: 2rem;
+
     }
+
+
 
     .card-title {
         font-weight: 600;
