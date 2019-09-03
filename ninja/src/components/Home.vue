@@ -1,9 +1,9 @@
 <template>
     <div class="container">
-        <div class="row juice-card" v-for="juice in juices" :key="juice.id">
+        <div class="row juice-card" v-for="(juice) in juices" :key="juice.id">
             <div class="card-title"> 
                 {{ juice.name.toUpperCase()}}
-                <i class="material-icons delete-icon">delete</i>
+                <i class="material-icons delete-icon" @click="deleteCard(juice.id)">delete</i>
             </div>
             
             <div class="card-body">
@@ -29,13 +29,23 @@ export default {
             juices: []
         }
     },
+    methods: {
+        deleteCard(juiceId) {
+            db.collection("juices").doc(juiceId).delete().then(() => {
+                console.log('deleted')
+                this.juices = this.juices.filter((juice) => {
+                return juice.id !== juiceId
+            })
+            })
+            
+        }
+    },
 
     created() {
         db.collection("juices").get().then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
               let juice = doc.data()
               juice.id = doc.id
-              console.log(juice)
               this.juices.push(juice)
           })
         })
