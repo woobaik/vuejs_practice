@@ -1,16 +1,13 @@
 <template>    
   <nav>
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo center">Ninja Juice</a>
+      <router-link :to="{name: 'Home'}" class="brand-logo center">Ninja Juice</router-link>
       <ul class="left hide-on-med-and-down">
         <li><a href="sass.html">Sass</a></li>
         <li><a href="badges.html">Components</a></li>
         <li class="active"><a href="collapsible.html">JavaScript</a></li>
       </ul>
-      
-        <a class="btn-floating btn-large halfway-fab waves-effect  black"><i class="material-icons">add</i></a>
-        
-
+        <router-link :to="{name: 'NewJuice'}" class="btn-floating btn-large halfway-fab waves-effect  black"><i class="material-icons">add</i></router-link>
     </div>
   </nav>   
 </template>
