@@ -1,10 +1,9 @@
 <template>
     <div class="container">
-        
         <div class="row juice-card" v-for="juice in juices" :key="juice.id">
-            
             <div class="card-title"> 
                 {{ juice.name.toUpperCase()}}
+                <i class="material-icons delete-icon">delete</i>
             </div>
             
             <div class="card-body">
@@ -34,7 +33,10 @@ export default {
     created() {
         db.collection("juices").get().then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
-              this.juices.push(doc.data())
+              let juice = doc.data()
+              juice.id = doc.id
+              console.log(juice)
+              this.juices.push(juice)
           })
         })
     }
@@ -57,19 +59,25 @@ export default {
         padding: 1rem;
         margin-left: 2rem;
         
-        
-
     }
-
-
 
     .card-title {
         font-weight: 600;
         letter-spacing: 0.3rem;
+        display: flex;
+        justify-content: space-evenly;
     }
 
+    .delete-icon {
+        cursor: pointer;
+        color: white;
+        transition: color 0.5s ease-in-out;
+    }
 
-    
+    .delete-icon:hover {
+        color: black;
+    }
+
     .card-body {
         display: flex;
         flex-wrap: wrap;

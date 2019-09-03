@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <app-nav-bar></app-nav-bar>    
-    <app-home :juices="juices"></app-home>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import navBar from '@/components/NavBar.vue'
-import Home from '@/components/Home.vue'
+
 
 export default {
   data: () => {
@@ -17,7 +17,7 @@ export default {
   },
   components: {
     "app-nav-bar": navBar,
-    "app-home": Home
+
   }
 }
 </script>
