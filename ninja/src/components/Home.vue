@@ -22,23 +22,42 @@
 </template>
 
 <script>
+import db from '@/firebase/init.js'
+
 export default {
-    props: ['juices']
+    data: function() {
+        return {
+            juices: []
+        }
+    },
+
+    created() {
+        db.collection("juices").get().then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+              this.juices.push(doc.data())
+          })
+        })
+    }
 }
 </script>
 
 <style scoped>
-    .container{ 
+    .container { 
         display: flex;
         flex-basis: 20%;
+        width: 100vw;
+        flex-wrap: wrap;
     }
     .juice-card {
+        width: 33%;
         margin-top: 2rem;
         text-align: center;
         border-radius: 1rem;
         background-color: bisque;
         padding: 1rem;
         margin-left: 2rem;
+        
+        
 
     }
 
@@ -53,7 +72,7 @@ export default {
     
     .card-body {
         display: flex;
-        
+        flex-wrap: wrap;
     }
 
     .card-ingredient {
