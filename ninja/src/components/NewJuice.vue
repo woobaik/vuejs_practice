@@ -13,10 +13,13 @@
                   <input type="text" class="validate" id="ingredient" @keydown.tab.prevent="addIngredient" v-model="ingredient">
                   <label for="ingredient">Ingredient</label>
               </div>
-            <div class="chips-field">
-                <div class="chip" v-for="(ingredient,index) in ingredients" :key="index">
+              <div class="col s1">
+                  <i class="material-icons plus-icon" @click="addIngredient">add</i>
+              </div>
+            <div class="chips-field col s12">
+                <div class="chip" v-for="(ingredient,index) in ingredients" :key="index" @click.prevent="removeIngredient(index)">
                     {{ ingredient }}
-                    <i class="close material-icons">close</i>
+                    <span class="removeBtn">X</span>
                 </div>
             </div>             
 
@@ -52,7 +55,7 @@ export default {
 
     methods: {
         addNewJuice() {
-            if (this.name === '' || this.ingredients === []) {
+            if ( this.name === '' || this.ingredients.length === 0 ) {
                 this.notification = 'There was someting wrong with your input'
             } else {
                 db.collection('juices').add({
@@ -87,6 +90,10 @@ export default {
                 this.notification = ''
                 this.ingredient =''
             }
+        },
+
+        removeIngredient(index) {
+            this.ingredients.splice(index,1)
         }
     }
 }
@@ -114,9 +121,24 @@ export default {
         color: red;
     }
 
+    .chips-field {
+        display: block;
+    }
+
     .submitBtn {
         margin-top: 2rem;
     }
 
+    .removeBtn {
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        padding-left: 1rem;
+        font-weight: 900;
+    }
+
+    .removeBtn:hover {
+        color: black;
+        font-size: 1.2rem;
+    }
 </style>
 
