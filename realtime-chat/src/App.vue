@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <Home/>
+    <app-nav-bar></app-nav-bar>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Home from './components/Home.vue'
+import navBar from './components/layouts/navBar.vue'
 
 export default {
   name: 'app',
   components: {
-    Home
+    'app-nav-bar': navBar
   }
 }
 </script>
@@ -22,6 +23,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
