@@ -3,7 +3,7 @@
     <div class="container">
       <div class="col s10 chatroom">
         <div class="card">
-          <span class="card-title">ENTER YOUR NAME</span>
+          <span class="card-title">Chatroom</span>
           <div class="card-body">
             <div class="card nickname-box">
               <div class="nickname-description">
@@ -14,6 +14,9 @@
                   <input type="text" placeholder="Enter your name" v-model="nickname">
                   <button class="btn teal" type="submit">Enter the room</button>
                 </form>
+              </div>
+              <div class="message" v-if="message">
+                {{ message }}
               </div>
             </div>
           </div>
@@ -27,12 +30,18 @@
 export default {
   data: function() {
     return {
-      nickname: ''
+      nickname: '',
+      message: ''
     }
   }, 
   methods: {
     enterNickName() {
-      this.$router.push({name: 'Chat', params: {nickname: this.nickname}})
+      if (this.nickname) {
+        this.$router.push({name: 'Chat', params: {nickname: this.nickname}})
+      } else {
+        this.message = 'Please Enter Your Nickname'
+      }
+      
     }
   }
 }
@@ -72,6 +81,12 @@ export default {
     padding-top: 4rem;
     width: 50%;
     align-self: center;
+  }
+  
+  .message {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    color: lightsalmon;
   }
 
 </style>
