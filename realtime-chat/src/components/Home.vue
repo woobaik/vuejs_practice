@@ -36,10 +36,11 @@ export default {
   }, 
   methods: {
     enterNickName() {
-      if (this.nickname) {
-        this.$router.push({name: 'Chat', params: {nickname: this.nickname}})
+      if (this.nickname.trim() !== '') {
+        this.$router.push({name: 'Chat', params: {nickname: this.nickname.trim()}})
       } else {
         this.message = 'Please Enter Your Nickname'
+        
       }
       
     }
