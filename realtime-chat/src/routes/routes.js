@@ -19,6 +19,8 @@ const routes = [
         component: Chat,
         params: true
     }
+
+    
 ]
 
 const router = new VueRouter({

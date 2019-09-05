@@ -14,6 +14,7 @@
               <div class="chat-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rerum veniam eveniet, dignissimos modi aspernatur. Expedita cupiditate non dolore sit harum minus cum, odit libero optio velit aperiam, repudiandae error.</div>
             </div>
           </div>
+          <app-chat-area class="chat-area"></app-chat-area>
         </div>
       </div>  
     </div>
@@ -21,8 +22,13 @@
 </template>
 
 <script>
-export default {
 
+import ChatArea from '@/components/ChatArea.vue'
+
+export default {
+  components: {
+    'app-chat-area': ChatArea
+  }
 }
 </script>
 
@@ -65,6 +71,10 @@ export default {
     max-width: 85%;
     flex-basis: auto;
     
+  }
+
+  .chat-area {
+    border: 1px solid lightgray;;
   }
   
 </style>
