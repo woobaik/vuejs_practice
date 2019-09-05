@@ -3,15 +3,18 @@
     <div class="container">
       <div class="col s10 chatroom">
         <div class="card">
-          <span class="card-title">SAMPLE CHAT ROOM</span>
-          <div class="chat-body">
-            <div class="chat-info">
-              <div class="chat-user">Name</div>
-              <div class="chat-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rerum veniam eveniet, dignissimos modi aspernatur. Expedita cupiditate non dolore sit harum minus cum, odit libero optio velit aperiam, repudiandae error.</div>
-            </div>
-              <div class="chat-info">
-                <div class="chat-user">Joungwoo Baik</div>
-              <div class="chat-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rerum veniam eveniet, dignissimos modi aspernatur. Expedita cupiditate non dolore sit harum minus cum, odit libero optio velit aperiam, repudiandae error.</div>
+          <span class="card-title">ENTER YOUR NAME</span>
+          <div class="card-body">
+            <div class="card nickname-box">
+              <div class="nickname-description">
+                Welcome to Chatroom
+              </div>
+              <div class="nickname-form">
+                <form @submit.prevent="enterNickName">
+                  <input type="text" placeholder="Enter your name" v-model="nickname">
+                  <button class="btn teal" type="submit">Enter the room</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -22,7 +25,16 @@
 
 <script>
 export default {
-
+  data: function() {
+    return {
+      nickname: ''
+    }
+  }, 
+  methods: {
+    enterNickName() {
+      this.$router.push({name: 'Chat', params: {nickname: this.nickname}})
+    }
+  }
 }
 </script>
 
@@ -31,17 +43,10 @@ export default {
   .home {
     margin-top: 60px;
     min-height: 100vh;
-  }
-
-  .chatroom {
     min-height: 80vh;
   }
 
-  .card {
-    background-color: light-grey;
-  }
-
-  .chat-body {
+  .card-body {
     background-color: #fff5f5;
     height: 70vh;
     text-align: left;
@@ -49,27 +54,24 @@ export default {
     color: white;
   }
 
-  .chat-info {
+  .nickname-box {
+    color: black;
+    height: 50vh;
+    margin: 4rem;
     display: flex;
-    flex-basis: 10%;
-    margin-bottom: 1rem;
+    flex-direction: column;
+    text-align: center;
   }
 
-  .chat-user {
-    display: inline-block;
-    color: #733c3c;
-    flex-basis: 8rem;
-    
-    
+  .nickname-description {
+    margin-top: 4rem;
+    font-size: 3rem;
   }
 
-  .chat-message {
-    display: inline-block;
-    padding-left: 1rem;
-    color: #1b471b;
-    max-width: 85%;
-    flex-basis: auto;
-    
+  .nickname-form {
+    padding-top: 4rem;
+    width: 50%;
+    align-self: center;
   }
-  
+
 </style>
