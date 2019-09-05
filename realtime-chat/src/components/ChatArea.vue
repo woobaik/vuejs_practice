@@ -8,7 +8,7 @@
 </template>
 
 <script>
-
+import firebase from 'firebase'
 import db from '@/firebase/init.js'
 
 export default {
@@ -25,7 +25,8 @@ export default {
             if (this.chat.trim() !== '') {
                 db.collection('messages').add({
                     chat: this.chat,
-                    nickname: this.name
+                    nickname: this.name,
+                    created: firebase.firestore.Timestamp.fromDate(new Date())
                 })
                 .then(() => {
                     this.chat = ''

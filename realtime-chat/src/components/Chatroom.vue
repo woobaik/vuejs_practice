@@ -7,7 +7,8 @@
           <div class="chat-body">
               <div class="chat-info" v-for="(msgBlock) in chatBody" :key="msgBlock.id">
                 <div class="chat-user">{{ msgBlock.nickname }}</div>
-              <div class="chat-message">{{ msgBlock.chat}}</div>
+              <div class="chat-message">{{ msgBlock.chat}} <span class="timestamp"> sent at {{ msgBlock.created.seconds }}</span></div>
+              
             </div>
           </div>
           <app-chat-area class="chat-area" :name="currentUser"></app-chat-area>
@@ -35,6 +36,7 @@ export default {
   created: function() {
     db.collection('messages').onSnapshot( snapshot => {
       snapshot.docChanges().forEach((doc) => {
+          console.log(doc.doc.data().created.seconds)
           if (doc.type === "added") {
             this.chatBody.push(doc.doc.data())
           }
@@ -100,6 +102,11 @@ export default {
 
   .chat-area {
     border: 1px solid lightgray;;
+  }
+
+  .timestamp {
+    color: gray;
+    font-size: 0.7rem;
   }
   
 </style>
