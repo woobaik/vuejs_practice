@@ -5,13 +5,9 @@
         <div class="card">
           <span class="card-title">SAMPLE CHAT ROOM</span>
           <div class="chat-body">
-            <div class="chat-info">
-              <div class="chat-user">name</div>
-              <div class="chat-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rerum veniam eveniet, dignissimos modi aspernatur. Expedita cupiditate non dolore sit harum minus cum, odit libero optio velit aperiam, repudiandae error.</div>
-            </div>
-              <div class="chat-info">
-                <div class="chat-user">Joungwoo Baik</div>
-              <div class="chat-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rerum veniam eveniet, dignissimos modi aspernatur. Expedita cupiditate non dolore sit harum minus cum, odit libero optio velit aperiam, repudiandae error.</div>
+              <div class="chat-info" v-for="(msgBlock) in chatBody" :key="msgBlock.id">
+                <div class="chat-user">{{ msgBlock.nickname }}</div>
+              <div class="chat-message">{{ msgBlock.chat}}</div>
             </div>
           </div>
           <app-chat-area class="chat-area" :name="currentUser"></app-chat-area>
@@ -29,18 +25,20 @@ import db from '@/firebase/init'
 export default {
   data: function() {
     return {
-      currentUser: this.$route.params.nickname
+      currentUser: this.$route.params.nickname,
+      chatBody: []
     }
   },
   components: {
     'app-chat-area': ChatArea
   },
   created: function() {
-    console.log(this.currentUser)
-    db.collection("messages").get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-          console.log(`${doc.id} => ${doc.data()}`);
-      });
+    db.collection('messages').onSnapshot( snapshot => {
+      snapshot.docChanges().forEach((doc) => {
+          if (doc.type === "added") {
+            this.chatBody.push(doc.doc.data())
+          }
+      } )
     })
   }
 }
