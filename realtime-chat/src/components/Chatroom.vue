@@ -60,7 +60,20 @@ export default {
     text-align: left;
     padding: 1rem 0.5rem 0 1rem;
     color: white;
+    overflow: scroll;
   }
+
+  ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
 
   .chat-info {
     display: flex;
