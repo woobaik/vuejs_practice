@@ -6,7 +6,7 @@
           <span class="card-title">SAMPLE CHAT ROOM</span>
           <div class="chat-body">
             <div class="chat-info">
-              <div class="chat-user">Name</div>
+              <div class="chat-user">name</div>
               <div class="chat-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rerum veniam eveniet, dignissimos modi aspernatur. Expedita cupiditate non dolore sit harum minus cum, odit libero optio velit aperiam, repudiandae error.</div>
             </div>
               <div class="chat-info">
@@ -14,7 +14,7 @@
               <div class="chat-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt rerum veniam eveniet, dignissimos modi aspernatur. Expedita cupiditate non dolore sit harum minus cum, odit libero optio velit aperiam, repudiandae error.</div>
             </div>
           </div>
-          <app-chat-area class="chat-area"></app-chat-area>
+          <app-chat-area class="chat-area" :name="currentUser"></app-chat-area>
         </div>
       </div>  
     </div>
@@ -24,10 +24,24 @@
 <script>
 
 import ChatArea from '@/components/ChatArea.vue'
+import db from '@/firebase/init'
 
 export default {
+  data: function() {
+    return {
+      currentUser: this.$route.params.nickname
+    }
+  },
   components: {
     'app-chat-area': ChatArea
+  },
+  created: function() {
+    console.log(this.currentUser)
+    db.collection("messages").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+          console.log(`${doc.id} => ${doc.data()}`);
+      });
+    })
   }
 }
 </script>

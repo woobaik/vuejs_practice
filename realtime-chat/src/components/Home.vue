@@ -15,8 +15,8 @@
                   <button class="btn teal" type="submit">Enter the room</button>
                 </form>
               </div>
-              <div class="message" v-if="message">
-                {{ message }}
+              <div class="notification" v-if="notification">
+                {{ notification }}
               </div>
             </div>
           </div>
@@ -31,18 +31,17 @@ export default {
   data: function() {
     return {
       nickname: '',
-      message: ''
+      notification: ''
     }
   }, 
   methods: {
     enterNickName() {
       if (this.nickname.trim() !== '') {
-        this.$router.push({name: 'Chat', params: {nickname: this.nickname.trim()}})
+        this.$router.push({name: 'Chat', params: {nickname: this.nickname}})
       } else {
-        this.message = 'Please Enter Your Nickname'
+        this.notification = 'Please Enter Your Nickname'
         
-      }
-      
+      }   
     }
   }
 }
@@ -84,7 +83,7 @@ export default {
     align-self: center;
   }
   
-  .message {
+  .notification {
     margin-top: 2rem;
     font-size: 1.5rem;
     color: lightsalmon;

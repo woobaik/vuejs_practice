@@ -1,19 +1,45 @@
 <template>
   <div class="chatArea">
-      <form>
-          <input type="text" placeholder="Leave a message" class="input-box">
+      <form @submit.prevent="submitMsg">
+          <input type="text" placeholder="Leave a message" class="input-box" v-model="chat">
           <button class="btn">Enter</button>
       </form>
   </div>
 </template>
 
 <script>
+
+import db from '@/firebase/init.js'
+
 export default {
+    
     data: function() {
         return {
             chat: ''
         }
+    },
+    props: ['name'],
+    
+    methods: {
+        submitMsg() {
+            if (this.chat.trim() !== '') {
+                db.collection('messages').add({
+                    chat: this.chat,
+                    nickname: this.name
+                })
+                .then(function(docRef) {
+                    console.log("Document written with ID : ", docRef.id)
+                })
+                .catch(function(error) {
+                    console.error("Error adding document: ", error)
+                })
+            } else {
+                console.log('this is empty ')
+            }
+        }
     }
+    
+
 }
 </script>
 
