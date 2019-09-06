@@ -7,7 +7,7 @@
           <div class="chat-body">
               <div class="chat-info" v-for="(msgBlock) in chatBody" :key="msgBlock.id">
                 <div class="chat-user">{{ msgBlock.nickname }}</div>
-              <div class="chat-message">{{ msgBlock.chat}} <span class="timestamp"> sent at {{ msgBlock.created.seconds }}</span></div>
+              <div class="chat-message">{{ msgBlock.chat}} <span class="timestamp"> sent at {{ msgBlock.created.created | moment }}</span></div>
               
             </div>
           </div>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-
+import moment from 'moment'
 import ChatArea from '@/components/ChatArea.vue'
 import db from '@/firebase/init'
 
@@ -33,10 +33,16 @@ export default {
   components: {
     'app-chat-area': ChatArea
   },
+
+  filters: {
+    moment: function(date) {
+      return moment(date).format('llll');
+    }
+  },
+
   created: function() {
     db.collection('messages').onSnapshot( snapshot => {
       snapshot.docChanges().forEach((doc) => {
-          console.log(doc.doc.data().created.seconds)
           if (doc.type === "added") {
             this.chatBody.push(doc.doc.data())
           }
